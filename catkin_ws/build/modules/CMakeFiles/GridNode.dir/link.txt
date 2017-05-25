@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC  -Wall -std=c++11   -shared -Wl,-soname,libGridNode.so -o /home/astronaut/catkin_ws/devel/lib/libGridNode.so CMakeFiles/GridNode.dir/include/GridNode.cpp.o  -L/opt/ros/indigo/lib /opt/ros/indigo/lib/liboctomap.so /opt/ros/indigo/lib/liboctomath.so -Wl,-rpath,/opt/ros/indigo/lib 

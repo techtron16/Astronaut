@@ -1,0 +1,19 @@
+<launch>
+  <node pkg="apriltags_ros" type="apriltag_detector_node" name="apriltag_detector" output="screen">
+    <remap from="image_rect" to="/usb_cam/image_raw"/>
+    <rosparam param="tag_descriptions">[
+      {id: 0, size: 0.020},
+      {id: 1, size: 0.020},
+      {id: 2, size: 0.020},
+      {id: 3, size: 0.020},
+      {id: 4, size: 0.020},
+      {id: 6, size: 0.020},
+      {id: 7, size: 0.020},
+      {id: 9, size: 0.020},
+      {id: 8, size: 0.020},
+      {id: 5, size: 0.020}]
+    </rosparam>
+    <rosparam param="camera_name">/usb_cam</rosparam>
+    <rosparam param="tag_family">36h11</rosparam>
+  </node>
+</launch>

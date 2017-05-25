@@ -1,0 +1,2 @@
+cmvision:color_tracker:modules
+-DCATKIN_DEVEL_PREFIX=/home/astronaut/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/astronaut/catkin_ws/install -G Unix Makefiles

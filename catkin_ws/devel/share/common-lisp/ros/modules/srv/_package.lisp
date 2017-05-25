@@ -1,0 +1,15 @@
+(cl:defpackage modules-srv
+  (:use )
+  (:export
+   "RECON_REQ"
+   "<RECON_REQ-REQUEST>"
+   "RECON_REQ-REQUEST"
+   "<RECON_REQ-RESPONSE>"
+   "RECON_REQ-RESPONSE"
+   "TARGET_REQ"
+   "<TARGET_REQ-REQUEST>"
+   "TARGET_REQ-REQUEST"
+   "<TARGET_REQ-RESPONSE>"
+   "TARGET_REQ-RESPONSE"
+  ))
+

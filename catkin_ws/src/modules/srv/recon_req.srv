@@ -1,0 +1,3 @@
+std_msgs/String[] tags
+---
+nav_msgs/Path path

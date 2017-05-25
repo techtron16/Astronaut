@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC  -Wall -std=c++11   -shared -Wl,-soname,libSensorCell.so -o /home/astronaut/catkin_ws/devel/lib/libSensorCell.so CMakeFiles/SensorCell.dir/include/sensorCell.cpp.o  -L/opt/ros/indigo/lib /opt/ros/indigo/lib/liboctomap.so /opt/ros/indigo/lib/liboctomath.so -Wl,-rpath,/opt/ros/indigo/lib 

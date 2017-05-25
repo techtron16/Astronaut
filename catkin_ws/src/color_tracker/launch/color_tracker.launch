@@ -1,0 +1,6 @@
+<launch>
+
+	<include file="$(find cmvision)/cmvision.launch" />
+	<node name="color_tracker" pkg="color_tracker" type="color_tracker" />
+
+</launch>

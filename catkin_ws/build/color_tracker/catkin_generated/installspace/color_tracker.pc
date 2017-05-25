@@ -1,0 +1,8 @@
+prefix=/home/astronaut/catkin_ws/install
+
+Name: color_tracker
+Description: Description of color_tracker
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/astronaut/catkin_ws/install/lib 
+Requires: 
