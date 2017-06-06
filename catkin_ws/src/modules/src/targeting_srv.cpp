@@ -23,6 +23,7 @@
 #include <tf/transform_datatypes.h>
 #include <boost/units/systems/si.hpp>
 #include <boost/units/io.hpp>
+#include <../../opt/ros/indigo/include/nav_msgs/OccupancyGrid.h>
 #include <tf/transform_broadcaster.h>
 #include <nav_msgs/OccupancyGrid.h>
 #include <nav_msgs/MapMetaData.h>
@@ -185,7 +186,7 @@ bool target_req_cb(modules::target_req::Request  &req, modules::target_req::Resp
     }
   }
   
-  //grid_pub.publish(bloatMap);
+  grid_pub.publish(bloatMap);
   
   //--------------
   //Finished Bloating Map
@@ -239,12 +240,19 @@ bool target_req_cb(modules::target_req::Request  &req, modules::target_req::Resp
   
   double offset = 0.55;
   
-  if (req.request.position.z > 0.15)
+  if (req.request.position.z > 0.1 && minDistance < 0.4)
   {
     res.recon_type = 3;
-    ROS_INFO("Reachable, ledge environment");
+    offset = 0.6;
+    ROS_INFO("Reachable, stamp environment");
   }
-  if (minDistance < 0.3)
+  else if (req.request.position.z > 0.1 && minDistance > 0.4)
+  {
+    res.recon_type = 4;
+    offset = 1.0;
+    ROS_INFO("Reachable, stairs environment");
+  }
+  else if (minDistance < 0.3)
   {
     res.recon_type = 1;
     ROS_INFO("Reachable, no reconfiguration required");
@@ -270,6 +278,8 @@ bool target_req_cb(modules::target_req::Request  &req, modules::target_req::Resp
   {
     offDistance = max(double(0.0), double(offset - minDistance));
   }
+  
+  cout << "offDistance: " << offDistance << endl;
   
   tf::Vector3 reconPoint = minCell - tf::Vector3(offDistance * cos(reconYaw), offDistance * sin(reconYaw), 0);
   
@@ -304,7 +314,7 @@ bool target_req_cb(modules::target_req::Request  &req, modules::target_req::Resp
 
 int main(int argc, char** argv)
 {
-  ros::init(argc, argv, "target_srv");
+  ros::init(argc, argv, "target_srv1");
   
   ros::NodeHandle node;
 
@@ -316,6 +326,9 @@ int main(int argc, char** argv)
   tf::Transform modTransform;
   
   ros::Subscriber grid_sub = node.subscribe("/map", 1, grid_cb);
+  grid_pub = node.advertise<nav_msgs::OccupancyGrid>("/bloated_map", 1);
+  
+  cout << "Soooooo" << endl;
   
   ros::spin();  
   

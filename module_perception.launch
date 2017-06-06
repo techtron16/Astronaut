@@ -53,6 +53,10 @@
   <include ns="minnow" file="$(find turtlebot_bringup)/launch/3dsensor.launch">
 	<arg name="scan_processing" value="false" />
   </include>
+
+  <!-- <include ns="minnow" file="$(find astra_launch)/launch/astra.launch" /> -->
+<!--  <include file="$(find usb_cam)/launch/astra_rgb.launch" /> -->
+
   <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml"/>
   
   <!-- Mapping -->
@@ -71,8 +75,10 @@
 	  <!-- inputs -->
 	  <remap from="scan"            to="/minnow/scan"/>
 	  <remap from="rgb/image"       to="/minnow/camera/rgb/image_rect_color"/>
+	  <!-- <remap from="rgb/image"       to="/usb_cam/image_raw"/> -->
   	  <remap from="depth/image"     to="/minnow/camera/depth_registered/image_raw"/>
   	  <remap from="rgb/camera_info" to="/minnow/camera/rgb/camera_info"/>
+  	  <!-- <remap from="rgb/camera_info" to="/usb_cam/camera_info"/> -->
   	  
   	  <!-- output -->
   	  <remap from="proj_map" to="/map"/>
@@ -128,8 +134,10 @@
       <param name="Odom/Strategy" value="0" />
       
       <remap from="rgb/image"       to="/minnow/camera/rgb/image_rect_color"/>
+      <!-- <remap from="rgb/image"       to="/usb_cam/image_raw"/> -->
       <remap from="depth/image"     to="/minnow/camera/depth_registered/image_raw"/>
       <remap from="rgb/camera_info" to="/minnow/camera/rgb/camera_info"/>
+      <!-- <remap from="rgb/camera_info" to="/usb_cam/camera_info"/> -->
     </node>
     
     <!-- visualization with rtabmapviz -->
